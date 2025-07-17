@@ -3,7 +3,7 @@
 module V1
   class IngredientsController < ApplicationController
     def combine
-      result = Ingredients::Combine.call(ingredients: params[:data])
+      result = Ingredients::Combine.call(ingredients: params[:ingredients])
       if result.success?
         render locals: { ingredients: result.success }
       else

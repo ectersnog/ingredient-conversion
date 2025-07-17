@@ -3,22 +3,20 @@
 module Ingredients
   class Combine < ApplicationOperation
     def call(ingredients:)
-      ingredients = step split_ingredients(ingredients:)
       step combine_ingredients(ingredients)
     end
 
     private
 
-    def split_ingredients(ingredients:)
-      ingredient_array = ingredients.map do |ingredient|
-        { ingredient: ingredient[:ingredient], serving_size: ingredient[:serving_size] }
+    def combine_ingredients(ingredients)
+      totals = ingredients.each_with_object(Hash.new(0)) do |item, result|
+        result[item[:name]] += item[:serving_size].to_i
       end
 
-      Success(ingredient_array)
-    end
-
-    def combine_ingredients(ingredients)
-      # code here
+      result_array = totals.map do |name, total|
+        { name:, serving_size: total }
+      end
+      Success(result_array)
     end
   end
 end
