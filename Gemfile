@@ -7,6 +7,7 @@ gem "dry-initializer"
 gem "dry-initializer-rails"
 gem "dry-operation"
 gem "http", "~> 5.3"
+gem "ingreedy"
 gem "jbuilder", "~> 2.13"
 gem "kamal", require: false
 gem "puma", ">= 5.0"
