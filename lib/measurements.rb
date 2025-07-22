@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Measurements
+  # Class to convert an ingredient amount from unity to teaspoon and back again.
   unless defined?(TEASPOON_CONVERSION)
     TEASPOON_CONVERSION = {
       "gallon" => 768,
@@ -20,10 +21,19 @@ class Measurements
     }.freeze
   end
 
+  # Convert a unit and quantity to teaspoons for combining with other ingredient amounts.
+  #
+  # @param qty [Float] The original ingredient amount
+  # @param unit [String] The Unit type
+  # @return [Integer] The resulting amount of teaspoons
   def self.to_tsp(qty, unit)
     (TEASPOON_CONVERSION[unit.to_s] * qty).to_i
   end
 
+  # Convert a teaspoon amount back into a human-readable amount
+  #
+  # @param qty [Integer] The amount to convert back from teaspoons
+  # @return [Array<Hash>] The resulting amounts
   def self.from_tsp(qty)
     result = {}
     TEASPOON_CONVERSION.each do |unit, value|

@@ -17,11 +17,11 @@ RSpec.describe Ingredients::Process do
 
       it 'parses the ingredients and returns proper values' do
         expect(result).to be_success
-        expect(result.success).to be_a(Ingredients::Ingredient_with_serving)
+        expect(result.success).to be_a(Ingredients::Ingredient_return)
 
         expect(result.success.ingredients.map(&:name)).to eq(%w[water flour])
-        expect(result.success.ingredients[0].amounts).to eq("ounce" => 1)
-        expect(result.success.ingredients[1].amounts).to eq("cup" => 1)
+        expect(result.success.ingredients[0].amount).to eq("ounce" => 1)
+        expect(result.success.ingredients[1].amount).to eq("cup" => 1)
       end
     end
 
@@ -37,12 +37,12 @@ RSpec.describe Ingredients::Process do
 
       it 'parses the ingredients and returns proper values' do
         expect(result).to be_success
-        expect(result.success).to be_a(Ingredients::Ingredient_with_serving)
+        expect(result.success).to be_a(Ingredients::Ingredient_return)
 
         expect(result.success.ingredients.map(&:name)).to eq(%w[water flour sugar])
-        expect(result.success.ingredients[0].amounts).to eq("1/4 cup" => 1)
-        expect(result.success.ingredients[1].amounts).to eq("pint" => 1)
-        expect(result.success.ingredients[2].amounts).to eq("1 1/2 cup" => 1)
+        expect(result.success.ingredients[0].amount).to eq("1/4 cup" => 1)
+        expect(result.success.ingredients[1].amount).to eq("pint" => 1)
+        expect(result.success.ingredients[2].amount).to eq("1 1/2 cup" => 1)
       end
     end
   end
