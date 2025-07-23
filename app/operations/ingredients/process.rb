@@ -11,8 +11,8 @@ module Ingredients
     # @example
     #   Ingredients::Process.call(
     #     ingredients: [
-    #       { ingredient: '1/2 pound of cabbage' },
-    #       { ingredient: '2 cups of butter' }
+    #       1/2 pound of cabbage',
+    #       2 cups of butter'
     #     ],
     #     serving_size: 2
     #   )
@@ -26,22 +26,22 @@ module Ingredients
 
     def combine_ingredients(ingredients, serving_size)
       totals = ingredients.each_with_object(Hash.new(0)) do |item, result|
-        result[item.name] += Measurements.to_tsp(item.amount, item.unit)
+        result[item.name] += Measurements.to_tsp(item.unit) * item.amount
       end
 
       result_array = totals.map do |name, total|
-        Ingredient_with_serving.new(name:, amount: Measurements.from_tsp(total * serving_size))
+        IngredientWithServing.new(name:, amount: Measurements.from_tsp((total * serving_size).to_i))
       end
-      Success(Ingredient_return.new(servings: serving_size, ingredients: result_array))
+      Success(IngredientReturn.new(servings: serving_size, ingredients: result_array))
     end
 
     def split(ingredients)
       parsed_ingredients = []
       ingredients.each do |item|
         begin
-          parsed = Ingreedy.parse(item[:ingredient])
+          parsed = Ingreedy.parse(item)
         rescue Ingreedy::ParseFailed, Parslet::ParseFailed
-          return Failure("Unable to parse ingredient: #{item[:ingredient]}")
+          return Failure("Unable to parse ingredient: #{item}")
         end
         parsed_ingredients.push(
           Ingredient.new(

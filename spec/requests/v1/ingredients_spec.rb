@@ -16,8 +16,8 @@ RSpec.describe "/v1/ingredients" do
         {
           serving_size: 1,
           ingredients: [
-            { ingredient: '1 ounce of water' },
-            { ingredient: '1 cup of flour' }
+            '1 ounce of water',
+            '1 cup of flour'
           ]
         }
       end
@@ -32,7 +32,7 @@ RSpec.describe "/v1/ingredients" do
           {
             serving_size: nil,
             ingredients: [
-              { ingredient: 'aaaa aaa aaa' }
+              'aaaa aaa aaa'
             ]
           }
         end

@@ -34,3 +34,4 @@
 # Ignore yard docs
 .yardoc/*
 doc/*
+.idea/*

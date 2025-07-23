@@ -9,15 +9,15 @@ RSpec.describe Ingredients::Process do
     context 'with serving size of 1' do
       let(:ingredients) do
         [
-          { ingredient: '1 ounce of water' },
-          { ingredient: '1 cup of flour' }
+          '1 ounce of water',
+          '1 cup of flour'
         ]
       end
       let(:serving_size) { 1 }
 
       it 'parses the ingredients and returns proper values' do
         expect(result).to be_success
-        expect(result.success).to be_a(Ingredients::Ingredient_return)
+        expect(result.success).to be_a(Ingredients::IngredientReturn)
 
         expect(result.success.ingredients.map(&:name)).to eq(%w[water flour])
         expect(result.success.ingredients[0].amount).to eq("ounce" => 1)
@@ -28,16 +28,16 @@ RSpec.describe Ingredients::Process do
     context 'with serving size of 2' do
       let(:ingredients) do
         [
-          { ingredient: '1 ounce of water' },
-          { ingredient: '1 cup of flour' },
-          { ingredient: '3/4 cup of sugar' }
+          '1 ounce of water',
+          '1 cup of flour',
+          '3/4 cup of sugar'
         ]
       end
       let(:serving_size) { 2 }
 
       it 'parses the ingredients and returns proper values' do
         expect(result).to be_success
-        expect(result.success).to be_a(Ingredients::Ingredient_return)
+        expect(result.success).to be_a(Ingredients::IngredientReturn)
 
         expect(result.success.ingredients.map(&:name)).to eq(%w[water flour sugar])
         expect(result.success.ingredients[0].amount).to eq("1/4 cup" => 1)
