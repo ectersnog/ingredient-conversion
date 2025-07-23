@@ -1,24 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Project of the week, Week 2
 
-Things you may want to cover:
+# Ingredient Conversion
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The intent behind this service is to, given a recipe ID and a servings parameter, return a payload of the ingredients and calculated measurements for the serving size.
