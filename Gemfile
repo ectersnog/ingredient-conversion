@@ -14,9 +14,6 @@ gem "puma", ">= 5.0"
 gem "rails", "~> 8.0.2"
 gem "rswag-api"
 gem "rswag-ui"
-gem "solid_cable"
-gem "solid_cache"
-gem "solid_queue"
 gem "sqlite3", ">= 2.1"
 gem "thruster", require: false
 gem "tzinfo-data", platforms: %i[windows jruby]

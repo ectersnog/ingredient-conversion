@@ -22,8 +22,8 @@ curl -X PUT http://localhost:3000/v1/ingredients \
 -d '{
     "serving_size": 2,
     "ingredients": [
-        { "ingredient": "1/2 cup of flour" },
-        { "ingredient": "3/4 cup of flour" }
+        "1/2 cup of flour",
+        "3/4 cup of flour"
     ]
 }'
 ```
