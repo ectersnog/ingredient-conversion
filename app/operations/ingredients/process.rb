@@ -37,7 +37,9 @@ module Ingredients
 
     def split(ingredients)
       parsed_ingredients = []
+      current_item = nil
       ingredients.each do |item|
+        current_item = item
         parsed = Ingreedy.parse(item)
         parsed_ingredients.push(
           Ingredient.new(
@@ -49,7 +51,7 @@ module Ingredients
       end
       Success(parsed_ingredients)
     rescue Ingreedy::ParseFailed, Parslet::ParseFailed
-      Failure("Unable to parse ingredient")
+      Failure("Unable to parse ingredient: #{current_item}")
     end
   end
 end
