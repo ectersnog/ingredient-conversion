@@ -1,24 +1,29 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Project of the week, Week 2
 
-Things you may want to cover:
+# Ingredient Conversion
 
-* Ruby version
+The intent behind this service is to, given an array of ingredients and a servings size, return a payload of the ingredients and calculated measurements for the serving size.
 
-* System dependencies
+# How to install
+1. Clone the repository
+2. `bundle install`
 
-* Configuration
+# How to run
+1. rails s
 
-* Database creation
+# Example usage
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+curl -X PUT http://localhost:3000/v1/ingredients \
+-H 'Accept: application/json' \
+-H 'Content-Type: application/json' \
+-d '{
+    "serving_size": 2,
+    "ingredients": [
+        "1/2 cup of flour",
+        "3/4 cup of flour"
+    ]
+}'
+```

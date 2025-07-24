@@ -1,0 +1,93 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+components:
+  schemas:
+    ingredients_response:
+      type: object
+      properties:
+        servings:
+          type: integer
+        ingredients:
+          type: array
+          items:
+            type: object
+            properties:
+              ingredient:
+                type: string
+              amounts:
+                type: object
+                additionalProperties:
+                  type: number
+            required:
+            - ingredient
+            - amounts
+            additionalProperties: false
+      required:
+      - servings
+      - ingredients
+      additionalProperties: false
+    put_ingredients:
+      type: object
+      properties:
+        serving_size:
+          type: integer
+        ingredients:
+          type: array
+          items:
+            type: object
+            properties:
+              ingredient:
+                type: string
+            required:
+            - ingredient
+      required:
+      - serving_size
+      - ingredients
+    ingredient_error_response:
+      oneOf:
+      - type: object
+        properties:
+          errors:
+            type: string
+        required:
+        - errors
+      - type: object
+        properties:
+          errors:
+            type: array
+            items:
+              type: string
+        required:
+        - errors
+paths:
+  "/v1/ingredients":
+    put:
+      summary: parse ingredients
+      parameters: []
+      responses:
+        '200':
+          description: parsed successfully
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ingredients_response"
+        '422':
+          description: invalid request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/ingredient_error_response"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/put_ingredients"
+        required: true
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000
