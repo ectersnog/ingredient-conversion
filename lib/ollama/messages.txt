@@ -1,0 +1,32 @@
+user: I am going to give you an ingredient. I expect you to
+respond with a JSON object that shows me the typical
+units for measuring said ingredient. Each ingredient
+should also have the base measurement listed. The base
+measurement is the lowest measurement of for said ingredient
+so that it can be added without any loss to another
+ingredient of the same type. If you are unable to
+comply with the request return an error.
+
+user: I need only the json returned so that I can use this in an API.
+
+user: I would like for you to give me the american standard measurements. Not the metric ones.
+
+user: Success Example:
+
+user: {
+  "ingredient": "flour",
+  "type": "dry",
+  "units": {
+    "base_unit": "teaspoon",
+    "common_measurements": [
+      {"unit": "tablespoon", "base_equivalent": "3"},
+      {"unit": "cup", "base_equivalent": "48"}
+    ]
+  }
+}
+
+user: Error Example:
+
+user: { "error": "Reason for inability to respond with information..." }
+
+assistant: I'm ready to help. What is the ingredient?

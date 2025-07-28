@@ -10,6 +10,7 @@ gem "http", "~> 5.3"
 gem "ingreedy"
 gem "jbuilder", "~> 2.13"
 gem "kamal", require: false
+gem "ollama-ai"
 gem "puma", ">= 5.0"
 gem "rails", "~> 8.0.2"
 gem "rswag-api"
